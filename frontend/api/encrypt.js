@@ -1,5 +1,3 @@
-import crypto from 'crypto';
-
 export default function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
@@ -12,8 +10,8 @@ export default function handler(req, res) {
   }
 
   // Mock FHE şifreleme — SHA256 hash
-  const encryptedPrice = crypto.createHash('sha256').update(price.toString()).digest('hex');
-  const encryptedAmount = crypto.createHash('sha256').update(amount.toString()).digest('hex');
+  const encryptedPrice = require('crypto').createHash('sha256').update(price.toString()).digest('hex');
+  const encryptedAmount = require('crypto').createHash('sha256').update(amount.toString()).digest('hex');
 
   res.status(200).json({
     encryptedPrice,
