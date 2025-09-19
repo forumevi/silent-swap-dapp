@@ -7,8 +7,7 @@ const handlePlaceOrder = async () => {
   try {
     setStatus('🔐 Sending price to relayer for FHE encryption...');
 
-    // Relayer sunucusuna istek gönder
-    const response = await fetch('https://your-relayer-server.com/encrypt', {
+    const response = await fetch('http://localhost:3000/encrypt', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ price, amount, isBuy })
