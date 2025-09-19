@@ -76,7 +76,6 @@ contract SilentSwap {
         Order storage sellOrder,
         bytes32 pairId
     ) internal {
-        // Basit demo için: sadece event at
         uint256 executedPrice = sellOrder.encryptedPrice.decrypt();
         emit TradeExecuted(
             buyOrder.owner,
