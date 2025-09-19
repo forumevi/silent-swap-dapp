@@ -1,11 +1,9 @@
-# 🚧 SilentSwap — Phase 1: UI + Concept Demo
+# 🤫 SilentSwap — Confidential Token Swap Marketplace
 
-> **This submission includes full source code for smart contract, tests, and deployment scripts — ready for Phase 2 (FHE integration) upon local setup.**
+> **MEV-proof, frontrunner-resistant decentralized exchange with Fully Encrypted Prices using Zama FHEVM.**
 
-✅ **Live Demo:** [https://silent-swap-dapp.vercel.app](https://silent-swap-dapp.vercel.app)  
-✅ **Full Contract Code:** `contracts/SilentSwap.sol`  
-✅ **Test Suite:** `test/SilentSwap.test.js`  
-✅ **Deployment Scripts:** `scripts/deploy.js`, `hardhat.config.js`
+[![Live Demo](https://img.shields.io/badge/demo-live-green?style=for-the-badge)](https://silent-swap-dapp.vercel.app)
+[![Built with Zama FHEVM](https://img.shields.io/badge/Built%20with-Zama%20FHEVM-orange?style=for-the-badge)](https://zama.ai)
 
 ---
 
@@ -22,8 +20,8 @@ Built for **Zama Developer Program — Builder Track**.
 ## ⚙️ Tech Stack
 
 - **Smart Contract:** Solidity + Zama FHEVM (`euint64`, `FHE.gte`)
-- **Frontend:** React + `@zama/fhe-client`
-- **Testnet:** Sepolia (deploy script ready — requires local setup)
+- **Frontend:** React + Relayer-based FHE encryption (no `@zama/fhe-client` — not published on npm)
+- **Testnet:** Sepolia
 - **Matching Engine:** On-chain, FHE-based price comparison
 
 ---
@@ -32,28 +30,12 @@ Built for **Zama Developer Program — Builder Track**.
 
 👉 [https://silent-swap-dapp.vercel.app](https://silent-swap-dapp.vercel.app)
 
-> 💡 **Phase 1 — UI Demo:** Click “Place Confidential Order” to see alert.  
-> **Phase 2 — Full FHE Integration:** Requires local Hardhat setup to deploy contract and enable encryption.
+> 💡 **Phase 1 — Relayer-Based FHE Demo:**  
+> - User enters price → sent to relayer for encryption  
+> - Relayer returns encrypted data → sent to contract  
+> - On-chain matching with `FHE.gte()`  
+> Full FHE client-side encryption will be added when `@zama/fhe-client` is officially published.
 
 ---
 
-## 🎥 Presentation Video Script
-
-> “Hi, I’m [Your Name]. This is SilentSwap — the first DEX with fully encrypted limit orders using Zama FHEVM.  
-> This Phase 1 submission includes:  
-> - Live UI demo  
-> - Full smart contract code with FHE logic  
-> - Test suite and deploy scripts  
-> Phase 2 will enable full FHE encryption — deployable with local Hardhat setup.  
-> Built for Zama Developer Program — Builder Track. Thank you.”
-
----
-
-## 📜 License
-
-MIT License — Free to use, modify, and distribute.
-
----
-
-💡 **Submit to Zama Developer Program:**  
-🔗 [https://guild.xyz/zama/developer-program](https://guild.xyz/zama/developer-program)
+## 🧩 Architecture
