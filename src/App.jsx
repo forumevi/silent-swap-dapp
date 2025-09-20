@@ -30,32 +30,37 @@ function App() {
     }
   };
 
-  const handlePlaceOrder = async () => {
-    if (!price || !amount) {
-      setStatus('⚠️ Please enter price and amount');
-      return;
+ const handlePlaceOrder = async () => {
+  if (!price || !amount) {
+    setStatus('⚠️ Please enter price and amount');
+    return;
+  }
+
+  try {
+    setStatus('🔐 Encrypting price with FHE...');
+    
+    const response = await fetch('/api/encrypt', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ price, amount, isBuy, pair: selectedPair })
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
 
-    try {
-      setStatus('🔐 Encrypting price with FHE...');
-      
-      const response = await fetch('/api/encrypt', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ price, amount, isBuy, pair: selectedPair })
-      });
+    const data = await response.json();
+    console.log("✅ Encrypted data:", data);
 
-      const data = await response.json();
-      console.log("✅ Encrypted data:", data);
+    setStatus('🚀 Order placed! Waiting for match...');
+    alert(`🎉 Order placed for ${selectedPair}!\nPrice: ${price}\nAmount: ${amount}`);
 
-      setStatus('🚀 Order placed! Waiting for match...');
-      alert(`🎉 Order placed for ${selectedPair}!\nPrice: ${price}\nAmount: ${amount}`);
-
-    } catch (error) {
-      console.error("❌ Error:", error);
-      setStatus('❌ Transaction failed. Check console.');
-    }
-  };
+  } catch (error) {
+    console.error("❌ Error:", error);
+    setStatus('❌ Transaction failed. Check console.');
+    alert("❌ Transaction failed. See browser console for details.");
+  }
+};
 
   return (
     <div style={{ 
