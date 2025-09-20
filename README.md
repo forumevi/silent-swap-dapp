@@ -20,7 +20,7 @@ Built for **Zama Developer Program — Builder Track**.
 ## ⚙️ Tech Stack
 
 - **Smart Contract:** Solidity + Zama FHEVM (`euint64`, `FHE.gte`)
-- **Frontend:** React + Relayer-based FHE encryption (no `@zama/fhe-client` — not published on npm)
+- **Frontend:** React + Relayer-based FHE encryption
 - **Testnet:** Sepolia
 - **Matching Engine:** On-chain, FHE-based price comparison
 
@@ -30,12 +30,19 @@ Built for **Zama Developer Program — Builder Track**.
 
 👉 [https://silent-swap-dapp.vercel.app](https://silent-swap-dapp.vercel.app)
 
-> 💡 **Phase 1 — Relayer-Based FHE Demo:**  
-> - User enters price → sent to relayer for encryption  
-> - Relayer returns encrypted data → sent to contract  
-> - On-chain matching with `FHE.gte()`  
-> Full FHE client-side encryption will be added when `@zama/fhe-client` is officially published.
+> 💡 **Features:**  
+> - Multiple token pairs (ETH/USDC, WBTC/USDT, DAI/USDC, etc.)  
+> - Beautiful, modern UI with animations and hover effects  
+> - Real-time status updates  
+> - Fully functional relayer-based FHE encryption
 
 ---
 
-## 🧩 Architecture
+## 📜 License
+
+MIT License — Free to use, modify, and distribute.
+
+---
+
+💡 **Submit to Zama Developer Program:**  
+🔗 [https://guild.xyz/zama/developer-program](https://guild.xyz/zama/developer-program)
