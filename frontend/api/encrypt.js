@@ -3,13 +3,13 @@ export default function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { price, amount, isBuy } = req.body;
+  const { price, amount, isBuy, pair } = req.body;
 
-  if (!price || !amount) {
-    return res.status(400).json({ error: 'Price and amount are required' });
+  if (!price || !amount || !pair) {
+    return res.status(400).json({ error: 'Price, amount, and pair are required' });
   }
 
-  // Mock FHE şifreleme — SHA256 hash
+  // Mock FHE encryption
   const encryptedPrice = require('crypto').createHash('sha256').update(price.toString()).digest('hex');
   const encryptedAmount = require('crypto').createHash('sha256').update(amount.toString()).digest('hex');
 
@@ -17,6 +17,7 @@ export default function handler(req, res) {
     encryptedPrice,
     encryptedAmount,
     isBuy,
+    pair,
     timestamp: Date.now()
   });
 }
